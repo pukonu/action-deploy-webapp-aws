@@ -1,0 +1,31 @@
+name: 'Deploy Web App'
+description: 'Deploys a webapp to an s3 bucket and then invalidates cloudfront entry'
+author: 'Peter Ukonu'
+branding:
+  color: 'blue'
+inputs:
+  build_path:
+    description: "The build path to deploy to s3"
+    required: true
+  bucket_name:
+    description: "The AWS S3 bucket you will like to deployt to"
+    required: true
+  bucket_key:
+    description: "The path of the folder you will to deploy to within the S3 bucket"
+    required: true
+    default: "/"
+  distribution_invalidation_path:
+    description: "The path in cloudfront to invalidate"
+    required: false
+    default: "/*"
+outputs:
+    aws-deploy-output:
+        description: 'A json output from AWS on the deployment'
+runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+      - ${{ inputs.build_path }}
+      - ${{ inputs.bucket_name }}
+      - ${{ inputs.bucket_key }}
+      - ${{ inputs.distribution_invalidation_path }}
