@@ -15,12 +15,12 @@ aws_region=AWS_REGION
 ls -l $build_path
 
 if [ -z "$AWS_ACCESS_KEY_ID" ]; then
-  echo "AWS_ACCESS_KEY was not found. Set this in your github secrets"
+  echo "AWS_ACCESS_KEY_ID was not found. Set this in your github secrets"
   err=1
 fi
 
 if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
-  echo "AWS_SECRET_ACCESS_KEY was not founde. Set this in your github secrets"
+  echo "AWS_SECRET_ACCESS_KEY was not found. Set this in your github secrets"
   err=1
 fi
 
