@@ -1,5 +1,6 @@
 name: 'Deploy Web App'
 description: 'Deploys a webapp to an s3 bucket and then invalidates cloudfront entry'
+icon: 'arrow-up-circle'
 author: 'Peter Ukonu'
 branding:
   color: 'blue'
