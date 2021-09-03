@@ -10,7 +10,7 @@ Just place this in your code underneath your build action within the steps, upda
         with:
           build_path: './path/to/build/folder'
           bucket_name: '<AWS BUCKET NAME>'
-          bucket_key: ''
+          bucket_key: '' # Optional
           distribution_invalidation_path: '/*'
         env:
           DISTRIBUTION_ID: '<DISTRIBUTION ID>'

@@ -41,7 +41,13 @@ fi
 output="AWS OUTPUT"
 echo "::set-output name=aws-deploy-output::$output"
 
-aws s3 cp $build_path s3://$bucket_name/$bucket_key --recursive
+# Only add the "/" if a buket_key is defined
+case "$bucket_key" in
+ "") formatted_bucket_key="" ;;
+ *) formatted_bucket_key="/$bucket_key" ;;
+esac
+
+aws s3 cp $build_path s3://$bucket_name$formatted_bucket_key --recursive
 
 if [ -z "$DISTRIBUTION_ID" ]; then
   echo "Skipping cloudfront invalidation..."
