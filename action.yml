@@ -22,7 +22,7 @@ inputs:
   empty_bucket:
     description: "Empty the bucket before uploading new content"
     required: false
-    default: true
+    default: false
 outputs:
     aws-deploy-output:
         description: 'A json output from AWS on the deployment'
