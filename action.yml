@@ -19,6 +19,10 @@ inputs:
     description: "The path in cloudfront to invalidate"
     required: false
     default: "/*"
+  empty_bucket:
+    description: "Empty the bucket before uploading new content"
+    required: false
+    default: true
 outputs:
     aws-deploy-output:
         description: 'A json output from AWS on the deployment'
@@ -30,3 +34,4 @@ runs:
       - ${{ inputs.bucket_name }}
       - ${{ inputs.bucket_key }}
       - ${{ inputs.distribution_invalidation_path }}
+      - ${{ inputs.empty_bucket }}

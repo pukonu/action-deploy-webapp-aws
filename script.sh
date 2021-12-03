@@ -10,6 +10,7 @@ build_path=$1
 bucket_name=$2
 bucket_key=$3
 distribution_invalidation_path=$4
+empty_bucket=$5
 aws_region=AWS_REGION
 
 ls -l $build_path
@@ -42,6 +43,10 @@ output="AWS OUTPUT"
 echo "::set-output name=aws-deploy-output::$output"
 
 aws s3 cp $build_path s3://$bucket_name/$bucket_key --recursive
+
+if [ "$empty_bucket" == "true" ]; then
+  aws s3 rm "s3://$bucket_name" --recursive
+fi
 
 if [ -z "$DISTRIBUTION_ID" ]; then
   echo "Skipping cloudfront invalidation..."
