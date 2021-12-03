@@ -42,11 +42,11 @@ fi
 output="AWS OUTPUT"
 echo "::set-output name=aws-deploy-output::$output"
 
-aws s3 cp $build_path s3://$bucket_name/$bucket_key --recursive
-
 if [ "$empty_bucket" == "true" ]; then
-  aws s3 rm "s3://$bucket_name" --recursive
+  aws s3 rm s3://$bucket_name/$bucket_key --recursive
 fi
+
+aws s3 cp $build_path s3://$bucket_name/$bucket_key --recursive
 
 if [ -z "$DISTRIBUTION_ID" ]; then
   echo "Skipping cloudfront invalidation..."
