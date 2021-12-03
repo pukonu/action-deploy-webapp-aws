@@ -12,6 +12,7 @@ Just place this in your code underneath your build action within the steps, upda
           bucket_name: '<AWS BUCKET NAME>'
           bucket_key: ''
           distribution_invalidation_path: '/*'
+          empty_bucket: 'false'  # set to true if you would like to empty the bucket first
         env:
           DISTRIBUTION_ID: '<DISTRIBUTION ID>'
           AWS_REGION: '<AWS REGION>'
